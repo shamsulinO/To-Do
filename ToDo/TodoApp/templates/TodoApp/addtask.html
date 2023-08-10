@@ -1,0 +1,16 @@
+{% extends 'TodoApp/base.html' %}
+
+{% block content %}
+<div class="content">
+<form method="post">
+    {% csrf_token %}
+          <div style="color: #A52A2A;"><h2>{{ form.non_field_errors }}</h2></div>
+
+    {% for f in form %}
+              <h1>{{ f }}</h1>
+              <h2>{{ f.errors }}</h2>
+    {% endfor %}
+    <button type="submit" style="background-color: #4827EC; width: 90px; color: #fff; border-radius: 5px; margin-bottom: 10px;">Add task</button>
+</form>
+</div>
+{% endblock %}

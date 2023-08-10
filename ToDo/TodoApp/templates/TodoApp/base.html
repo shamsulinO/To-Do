@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'TodoApp/css/styles.css' %}" type="text/css">
+</head>
+<body>
+
+    <header class="header mf1-position-relative js-header ">
+        <div class="header__container mf1-container mf1-max-width-lg">
+          <div class="header__logo">
+            <a href="{% url 'not_completed' %}">
+                <title>Go to homepage</title><h2>Home</h2></svg>
+            </a>
+          </div>
+
+          <button class="mf1-btn mf1-btn--subtle header__trigger js-header__trigger" aria-label="Toggle menu" aria-expanded="false" aria-controls="header-nav">
+            <i class="header__trigger-icon" aria-hidden="true"></i>
+            <span>Menu</span>
+          </button>
+
+          <nav class="header__nav js-header__nav" id="header-nav" role="navigation" aria-label="Main">
+            <div class="header__nav-inner">
+              <div class="header__label">Main menu</div>
+              <ul class="header__list">
+                  {% if header_select == 2 %}
+                    <li class="header__item"><a href="{% url 'completed' %}" class="header__link">Completed</a></li>
+                    <li class="header__item"><a href="{% url 'not_completed' %}" class="header__link" aria-current="page">Not Completed</a></li>
+                  {% elif header_select == 1 %}
+                    <li class="header__item"><a href="{% url 'completed' %}" class="header__link" aria-current="page">Completed</a></li>
+                    <li class="header__item"><a href="{% url 'not_completed' %}" class="header__link">Not Completed</a></li>
+                  {% else %}
+                    <li class="header__item"><a href="{% url 'completed' %}" class="header__link">Completed</a></li>
+                    <li class="header__item"><a href="{% url 'not_completed' %}" class="header__link">Not Completed</a></li>
+                  {% endif %}
+                <li class="header__item header__item--divider" aria-hidden="true"></li>
+                <li class="header__item"><a href="{% url 'logout'%}"> <h4 style="color: #4827EC;">{{user.username}}</h4></a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+{% block content %}
+{% endblock %}
+
+</body>
+<script src="{% static 'TodoApp/js/script.js' %}"></script>
+</html>
