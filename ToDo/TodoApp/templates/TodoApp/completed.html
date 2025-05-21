@@ -2,18 +2,18 @@
 
 {% block content %}
 <div class="content">
-    <a href='{% url "add_task"%}' style="background-color: #4827EC; text-align: center; border-radius: 5px;"><h2 style="color: #fff;">Add new task</h2></a>
+    <a href='{% url "add_task"%}' class="add_task">Добавить новую задачу</a>
 </div>
 {% for task in tasks %}
 <div class="content">
     <div style="display: flex; flex-flow: row nowrap;">
-        <div style='flex-grow: 3;'><h1 style="margin: 5px; color: #4827EC;">{{task.title}}</h1></div>
-        <div style="flex-grow: 1;"><h5 style="margin: 21px 10px 0 0; text-align: right;">Completed: {{task.time_update}}</h5></div>
+        <div style='flex-grow: 3;'><h1 class="task_title">{{task.title}}</h1></div>
+        <div style="flex-grow: 1;"><h5 class="task_time">Completed: {{task.time_update}}</h5></div>
     </div>
-    <h3 style="margin: 5px; color: #202020;">{{task.content}}</h3>
+    <h3 class="task_content">{{task.content}}</h3>
     <br>
-    <div style="display: flex; flex-flow: row nowrap; border-radius: 5px;">
-        <div style="flex-grow: 1;"><a href="/delete/{{task.pk}}" style="text-decoration: none;"><h3 style="margin: 5px; text-align: center; background-color: red; color: #fff; border-radius: 5px;">Delete</h3></a></div>
+    <div class="task_buttns">
+        <div style="flex-grow: 1;"><a onclick="task_delete({{task.pk}})" style="text-decoration: none;"><h3 class="task_delete">Delete</h3></a></div>
     </div>
 </div>
 {% endfor %}

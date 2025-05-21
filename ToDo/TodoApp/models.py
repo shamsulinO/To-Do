@@ -8,3 +8,8 @@ class Tasks(models.Model):
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
     completed = models.BooleanField(default=0)
+
+
+# class Profile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     visually_impaired = models.BooleanField(default=False)

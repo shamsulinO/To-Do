@@ -1,17 +1,17 @@
-{% extends 'TodoApp/base.html' %}
+{% extends 'TodoApp/base_log.html' %}
 
 {% block content %}
-<div class="content">
-<form method="post">
+<div class="content_log">
+<form method="post" style="padding: 10px;">
     {% csrf_token %}
           <div style="color: #A52A2A;"><h2>{{ form.non_field_errors }}</h2></div>
 
     {% for f in form %}
               <h1>{{ f }}</h1>
-              <h2>{{ f.errors }}</h2>
+              <h2 class="form_errors">{{ f.errors }}</h2>
     {% endfor %}
-    <button type="submit" style="background-color: #4827EC; width: 90px; color: #fff; border-radius: 5px; margin-bottom: 10px;">Login</button>
-  <div style="display: flex;"><h3>If you don't have account > </h3> <a href="{% url 'register'%}"><h3 style="color: #4827EC;">Register</h3></a></div>
+    <button type="submit" class="subbut">Логин</button>
+  <div class="log_info"><h3>У вас нет аккаунта?  </h3> <a href="{% url 'register'%}"><h3 style="color: #4827EC; margin-left: 5px;">Регистрация</h3></a></div>
 </form>
 </div>
 {% endblock %}

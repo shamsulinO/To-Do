@@ -17,6 +17,7 @@ def home(request):
 class Not_Completed(LoginRequiredMixin, ListView):
     template_name = 'TodoApp/not_completed.html'
     model = Tasks
+    login_url = 'login'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -24,13 +25,14 @@ class Not_Completed(LoginRequiredMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
-        tasks = Tasks.objects.filter(user=self.request.user.id, completed=0)
+        tasks = Tasks.objects.filter(user=self.request.user.id, completed=0)[::-1]
         return tasks
 
 
 class Completed(LoginRequiredMixin, ListView):
     template_name = 'TodoApp/completed.html'
     model = Tasks
+    login_url = 'login'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -38,7 +40,7 @@ class Completed(LoginRequiredMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
-        tasks = Tasks.objects.filter(user=self.request.user.id, completed=1)
+        tasks = Tasks.objects.filter(user=self.request.user.id, completed=1)[::-1]
         return tasks
 
 @login_required(login_url='login')
@@ -61,7 +63,7 @@ class AddTask(LoginRequiredMixin, CreateView):
     form_class = AddTaskForm
     template_name = 'TodoApp/addtask.html'
     success_url = reverse_lazy('home')
-    login_url = reverse_lazy('home')
+    login_url = 'login'
     raise_exception = True
 
     def get_context_data(self, **kwargs):

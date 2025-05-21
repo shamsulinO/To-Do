@@ -1,0 +1,411 @@
+
+/* CONFIRMATION-DIALOG */
+
+.confirm-dialog {
+    position: fixed;
+    display: none;
+    height: 100%;
+    width: 100%;
+    background-color: #00000057;
+    z-index: 7;
+    flex-wrap: wrap;
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur( 7px );
+    -webkit-backdrop-filter: blur( 7px );
+    left: 0;
+}
+
+.confirm-dialog-show {
+    display: flex;
+    animation: confirmDialogShow 250ms ease-in-out forwards;
+}
+
+@keyframes confirmDialogShow {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.confirm-dialog-hide {
+    display: flex;
+    animation: confirmDialogHide 150ms ease-in-out forwards;
+}
+
+@keyframes confirmDialogHide {
+    0% {opacity: 1;}
+    100% {opacity: 0;
+        display: none;}
+}
+
+.confirm-dialog-container {
+    height: fit-content;
+    width: fit-content;
+    padding: 5px 15px;
+    background: rgba(255, 255, 255, 0.281);
+    border: 2px solid rgba( 255, 255, 255, 0.18 );
+    border-radius: 25px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    margin: 10px;
+    z-index: 8;
+}
+
+.confirm-dialog-header {
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+    border-bottom: 2px solid #ffffff4d;
+    margin: 0px 15px;
+    text-shadow: 0px 0px 20px #00000045;
+}
+
+@media (max-width: 595px) {
+    .confirm-dialog-header {
+        margin: 0px;
+    }
+}
+
+.confirm-dialog-span {
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 0px 0px 10px #00000042;
+}
+
+.confirm-dialog-buttons {
+    display: flex;
+    margin-left: auto;
+    margin-right: 5px;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.confirm-dialog-buttons-no,
+.confirm-dialog-buttons-yes {
+    font-size: 25px;
+    background-color: #ffffff36;
+    padding: 2px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #ffffffbb;
+    -webkit-text-fill-color: #ffffffbb;
+    transition: all 250ms linear;
+}
+
+.confirm-dialog-cancel {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+.message-notification {
+    position: fixed;
+    width: 100%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    margin-top: 5px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    align-items: center;
+}
+
+.message-notification-content {
+    transition: all 150ms ease-in-out;
+    background-color: #ffffff33;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 0px;
+    font-weight: 500;
+    font-size: 16px;
+    overflow: hidden;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    width: fit-content;
+    opacity: 0;
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    height: 0px;
+    max-width: 0px;
+    padding: 0px;
+    opacity: 0;
+
+    /* height: 50px;
+    max-width: 410px;
+    padding: 5px;
+    opacity: 1; */
+}
+
+.message-notification-content-show {
+    transition: all 150ms ease-in-out;
+    max-width: 400px;
+    height: 50px;
+    padding: 5px 10px;
+    opacity: 1;
+}
+
+@media (max-width: 500px) {
+    .message-notification-content-show {
+        max-width: 90%;
+    }
+}
+
+.message-notification-content-image {
+    object-fit: cover;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.message-notification-content-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(100% - 50px);
+}
+
+.message-notification-content-info-username,
+.message-notification-content-info-message {
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.message-notification-content-info-message {
+    font-size: 13px;
+    font-weight: 400;
+    color: #ffffffb7;
+    -webkit-text-fill-color: #ffffffb7;
+}
+
+.message-notification-content-info-data {
+    display: none;
+}
+
+
+
+/* SHARE_DIALOG */
+
+.share-container {
+    height: fit-content;
+    max-height: 80%;
+    max-width: 900px;
+    width: 65%;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.151);
+    color: #ffffffd7;
+    -webkit-text-fill-color: #ffffffd7;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.share-header {
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    margin: 5px 10px;
+    text-shadow: 0px 0px 15px #0000003b;
+}
+
+.share-close-img {
+    height: 30px;
+    width: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.share-input {
+    transition: all 150ms ease-in-out;
+    background-color: #ffffff38;
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+    font-size: 25px;
+    width: calc(100% - 18px);
+    margin: 5px;
+    border: 2px solid #ffffff3a;;
+    border-radius: 5px;
+    outline: none;
+}
+
+.share-input:focus {
+    transition: all 150ms ease-in-out;
+    border: 2px solid #ffffffcb;
+}
+
+.share-userlist {
+    width: 100%;
+    height: calc(100% - 95px);
+    overflow: hidden;
+    overflow-y: auto;
+    border-radius: 22px;
+}
+
+
+.share-user {
+    overflow: hidden;
+    display: flex;
+    height: 50px;
+    width: calc(100% - 20px);
+    padding: 5px;
+    margin: 5px;
+    border-radius: 17px;
+    background: rgba(255, 255, 255, 0.295);
+}
+
+.share-user-img {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.share-user-name {
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+    font-size: 20px;
+    align-items: center;
+    display: grid;
+    margin-left: 10px;
+    font-weight: 500;
+    text-shadow: 0px 0px 15px #0000003b;
+}
+
+.share-user-share {
+    height: 100%;
+    aspect-ratio: 2 / 1;
+    font-size: 25px;
+    background: linear-gradient(150deg, #d4e9ff, #497dcf);
+    background-size: 400% 400%;
+    animation: gradient-story 10s ease-in-out infinite;
+    color: #fff;
+    display: flex;
+    cursor: pointer;
+    margin-left: auto;
+    border-radius: 12px;
+    text-shadow: 0px 0px 15px #0000003b;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-user-second-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #ffffffb3;
+    -webkit-text-fill-color: #ffffffb3;
+}
+
+.share-container-background {
+    transition: opacity 250ms ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    background: #00000046;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    opacity: 0;
+    display: none;
+}
+
+@media (max-width: 850px) {
+    .share-container {
+        height: fit-content;
+        max-height: 80%;
+        width: 85%;
+    }
+}
+
+@media (max-width: 595px) {
+
+    .share-container {
+        height: 90%;
+        width: 90%;
+    }
+
+    .share-user-share {
+        font-size: 13px;
+        aspect-ratio: 1.5/1;
+    }
+
+    .share-user-name {
+        font-size: 15px;
+    }
+
+    .share-user {
+        height: 40px;
+    }
+}
+
+
+@media (hover: hover) {
+    .confirm-dialog-buttons-yes:hover {
+        transition: all 250ms linear;
+        background-color: #ff4242;
+        color: #fff;
+        -webkit-text-fill-color: #fff;
+    }
+
+    .confirm-dialog-buttons-no:hover {
+        transition: all 250ms linear;
+        background-color: #ffffff6c;
+        color: #fff;
+        -webkit-text-fill-color: #fff;
+    }
+
+    .share-input:hover {
+        transition: all 150ms ease-in-out;
+        border: 2px solid #ffffff7e;
+    }
+}
+
+@media (hover: none) {
+    .confirm-dialog-buttons-yes:active {
+        transition: all 250ms linear;
+        background-color: #ff4242;
+        color: #fff;
+        -webkit-text-fill-color: #fff;
+    }
+
+    .confirm-dialog-buttons-no:active {
+        transition: all 250ms linear;
+        background-color: #ffffff6c;
+        color: #fff;
+        -webkit-text-fill-color: #fff;
+    }
+
+    .share-input:active {
+        transition: all 150ms ease-in-out;
+        border: 2px solid #ffffff7e;
+    }
+}

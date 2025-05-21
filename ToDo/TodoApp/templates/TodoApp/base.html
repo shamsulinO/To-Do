@@ -5,47 +5,101 @@
 <head>
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{% static 'TodoApp/css/styles.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'TodoApp/css/popup.css' %}" type="text/css">
 </head>
 <body>
 
-    <header class="header mf1-position-relative js-header ">
-        <div class="header__container mf1-container mf1-max-width-lg">
-          <div class="header__logo">
-            <a href="{% url 'not_completed' %}">
-                <title>Go to homepage</title><h2>Home</h2></svg>
-            </a>
-          </div>
+<!--    <header class="header mf1-position-relative js-header ">-->
+<!--        <div class="header__container mf1-container mf1-max-width-lg">-->
+<!--          <div class="header__logo">-->
+<!--            <a href="{% url 'not_completed' %}">-->
+<!--                <title>Go to homepage</title><h2>Home</h2></svg>-->
+<!--            </a>-->
+<!--          </div>-->
 
-          <button class="mf1-btn mf1-btn--subtle header__trigger js-header__trigger" aria-label="Toggle menu" aria-expanded="false" aria-controls="header-nav">
-            <i class="header__trigger-icon" aria-hidden="true"></i>
-            <span>Menu</span>
-          </button>
+<!--          <button class="mf1-btn mf1-btn&#45;&#45;subtle header__trigger js-header__trigger" aria-label="Toggle menu" aria-expanded="false" aria-controls="header-nav">-->
+<!--            <i class="header__trigger-icon" aria-hidden="true"></i>-->
+<!--            <span>Menu</span>-->
+<!--          </button>-->
 
-          <nav class="header__nav js-header__nav" id="header-nav" role="navigation" aria-label="Main">
-            <div class="header__nav-inner">
-              <div class="header__label">Main menu</div>
-              <ul class="header__list">
-                  {% if header_select == 2 %}
-                    <li class="header__item"><a href="{% url 'completed' %}" class="header__link">Completed</a></li>
-                    <li class="header__item"><a href="{% url 'not_completed' %}" class="header__link" aria-current="page">Not Completed</a></li>
-                  {% elif header_select == 1 %}
-                    <li class="header__item"><a href="{% url 'completed' %}" class="header__link" aria-current="page">Completed</a></li>
-                    <li class="header__item"><a href="{% url 'not_completed' %}" class="header__link">Not Completed</a></li>
-                  {% else %}
-                    <li class="header__item"><a href="{% url 'completed' %}" class="header__link">Completed</a></li>
-                    <li class="header__item"><a href="{% url 'not_completed' %}" class="header__link">Not Completed</a></li>
-                  {% endif %}
-                <li class="header__item header__item--divider" aria-hidden="true"></li>
-                <li class="header__item"><a href="{% url 'logout'%}"> <h4 style="color: #4827EC;">{{user.username}}</h4></a></li>
-              </ul>
+<!--          <nav class="header__nav js-header__nav" id="header-nav" role="navigation" aria-label="Main">-->
+<!--            <div class="header__nav-inner">-->
+<!--              <div class="header__label">Main menu</div>-->
+<!--              <ul class="header__list">-->
+<!--                  {% if header_select == 2 %}-->
+<!--                    <li class="header__item"><a href="{% url 'completed' %}" class="header__link">Completed</a></li>-->
+<!--                    <li class="header__item"><a href="{% url 'not_completed' %}" class="header__link" aria-current="page">Not Completed</a></li>-->
+<!--                  {% elif header_select == 1 %}-->
+<!--                    <li class="header__item"><a href="{% url 'completed' %}" class="header__link" aria-current="page">Completed</a></li>-->
+<!--                    <li class="header__item"><a href="{% url 'not_completed' %}" class="header__link">Not Completed</a></li>-->
+<!--                  {% else %}-->
+<!--                    <li class="header__item"><a href="{% url 'completed' %}" class="header__link">Completed</a></li>-->
+<!--                    <li class="header__item"><a href="{% url 'not_completed' %}" class="header__link">Not Completed</a></li>-->
+<!--                  {% endif %}-->
+<!--                <li class="header__item header__item&#45;&#45;divider" aria-hidden="true"></li>-->
+<!--                <li class="header__item"><a href="{% url 'logout'%}"> <h4 style="color: #4827EC;">{{user.username}}</h4></a></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--          </nav>-->
+<!--        </div>-->
+<!--      </header>-->
+
+
+<div class="confirm-dialog">
+        <div class="confirm-dialog-cancel"></div>
+        <div class="confirm-dialog-container">
+            <span class="confirm-dialog-header">Подтвердите действие</span>
+            <span class="confirm-dialog-span"></span>
+            <div class="confirm-dialog-buttons">
+                <div class="confirm-dialog-buttons-yes">Да</div>
+                <div class="confirm-dialog-buttons-no">Нет</div>
             </div>
-          </nav>
         </div>
-      </header>
+    </div>
+
+<header class="base_header">
+    <a class="home_button" href="{% url 'not_completed' %}">TodoApp</a>
+    <div class="header_buttons">
+        <a href="{% url 'completed' %}" class="header_buttons_button">Выполненные</a>
+        <a href="{% url 'not_completed' %}" class="header_buttons_button">Не выполненные</a>
+    </div>
+    <div class="header_buttons">
+        <img class="eye_ver" title="Информация" onclick="show_info()" alt="info-image" src="{% static 'TodoApp/svg/info.svg' %}">
+        <div class="logout" onclick="logout()">{{user.username}}</div>
+    </div>
+</header>
+
+<div class="pass_top"></div>
+
+<div class="info_place" onclick="close_info()" style="display: none;">
+    <div class="info_place_text" onclick="event.stopPropagation()">
+        Об программе:
+        <br>
+        Это сайт Todo — удобное веб-приложение для управления задачами. Здесь вы можете создавать заметки (задачи), редактировать их, удалять и отмечать как выполненные. Выполненные задачи автоматически перемещаются в отдельный список для наглядного контроля.
+        <br>
+        <br>
+        Помощь:
+        <br>
+        Краткое руководство:
+        <br>
+        • Создание задачи: Нажмите на кнопку "Добавить новую задачу", далее заполните все поля и нажмите "Добавить".
+        <br>
+        • Редактирование: В списке "Не выполненные" будут задачи которые можно отредактировать нажав на кнопку "Изменить".
+        <br>
+        • Удаление: Для удаления задачи нужно нажать на кнопку "Удалить" и подтвердить действие.
+        <br>
+        • Отметить как выполненную: В списке "Не выполненные" будут задачи которые можно отметить как выполненные, для этого нужно нажать кнопку "Завершить".
+        <br>
+        • Просмотр задач: В центре шапки сайта есть две кнопки "Выполненные" и "Не выполненные" с их помощью можно смотреть задачи которые вы выполнили и которые нет.
+        <br>
+        • Выйти из аккаунта: Для выхода из аккаунта нажмите на свой логин в шапке сайта и подтвердите действие.
+    </div>
+</div>
 
 {% block content %}
 {% endblock %}
 
 </body>
 <script src="{% static 'TodoApp/js/script.js' %}"></script>
+<script src="{% static 'TodoApp/JS/dialog.js' %}"></script>
 </html>

@@ -9,8 +9,8 @@ class AddTaskForm(forms.ModelForm):
         fields = ["title", "content"]
 
         widgets = {
-            "title": forms.Textarea(attrs={'style':'margin: 10px;width: 49vw; background: #fff; border-radius: 5px; border: 2px solid #4827EC;', "rows": 1, 'placeholder': 'Title'}),
-            "content": forms.Textarea(attrs={'style':'margin: 10px;width: 49vw; background: #fff; border-radius: 5px; border: 2px solid #4827EC;', "rows": 2, 'placeholder': 'Content', 'required':False}),
+            "title": forms.Textarea(attrs={'class':'AddTaskTitle', "rows": 1, 'placeholder': 'Заголовок'}),
+            "content": forms.Textarea(attrs={'class':'AddTaskContent', "rows": 3, 'placeholder': 'Текст', 'required':False}),
         }
 
 
@@ -20,21 +20,21 @@ class Edit(forms.ModelForm):
         fields = ["title", "content"]
 
         widgets = {
-            "title": forms.Textarea(attrs={'style':'margin: 10px;width: 49vw; background: #fff; border-radius: 5px; border: 2px solid #4827EC;', "rows": 1, 'placeholder': 'Title'}),
-            "content": forms.Textarea(attrs={'style':'margin: 10px;width: 49vw; background: #fff; border-radius: 5px; border: 2px solid #4827EC;', "rows": 2, 'placeholder': 'Content', 'required':False}),
+            "title": forms.Textarea(attrs={'class':'EditTitle', "rows": 1, 'placeholder': 'Заголовок'}),
+            "content": forms.Textarea(attrs={'class':'EditContent', "rows": 3, 'placeholder': 'Текст', 'required':False}),
         }
 
 
 class LoginUserForm(AuthenticationForm):
-    username = forms.CharField(label='Login', widget=forms.TextInput(attrs={'style': 'width: 100%; background-color: #fff; border-radius: 5px; border: 2px solid #4827EC; margin-bottom: 10px; padding-left: 5px;', 'placeholder': 'Login'}))
-    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'style': 'width: 100%; background-color: #fff; border-radius: 5px; border: 2px solid #4827EC; margin-bottom: 10px; padding-left: 5px;', 'placeholder': 'Password'}))
+    username = forms.CharField(label='Login', widget=forms.TextInput(attrs={'class': 'loglogin', 'placeholder': 'Логин'}))
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'logpass', 'placeholder': 'Пароль'}))
 
 
 class RegisterUserForm(UserCreationForm):
-    username = forms.CharField(label='Login', widget=forms.TextInput(attrs={'style': 'width: 100%; background-color: #fff; border-radius: 5px; border: 2px solid #4827EC; margin-bottom: 10px; padding-left: 5px;', 'placeholder': 'Логин'}))
-    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'style': 'width: 100%; background-color: #fff; border-radius: 5px; border: 2px solid #4827EC; margin-bottom: 10px; padding-left: 5px;', 'placeholder': 'Почта'}))
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'style': 'width: 100%; background-color: #fff; border-radius: 5px; border: 2px solid #4827EC; margin-bottom: 10px; padding-left: 5px;', 'placeholder': 'Пароль'}))
-    password2 = forms.CharField(label='Password repeat', widget=forms.PasswordInput(attrs={'style': 'width: 100%; background-color: #fff; border-radius: 5px; border: 2px solid #4827EC; margin-bottom: 10px; padding-left: 5px;', 'placeholder': 'Повтор пароля'}))
+    username = forms.CharField(label='Login', widget=forms.TextInput(attrs={'class': 'reglog', 'placeholder': 'Логин'}))
+    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'regemail', 'placeholder': 'Почта'}))
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'regpass', 'placeholder': 'Пароль'}))
+    password2 = forms.CharField(label='Password repeat', widget=forms.PasswordInput(attrs={'class': 'regpass', 'placeholder': 'Повтор пароля'}))
 
     class Meta:
         model = User

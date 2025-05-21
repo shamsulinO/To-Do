@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'TodoApp/css/styles.css' %}" type="text/css">
+</head>
+<body>
+
+<header class="base_header">
+    <a class="home_button_log" href="{% url 'login' %}">TodoApp</a>
+</header>
+
+<div class="pass_top"></div>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
